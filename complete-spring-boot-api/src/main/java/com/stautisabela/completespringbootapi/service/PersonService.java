@@ -14,13 +14,11 @@ public class PersonService {
 	private Logger logger = Logger.getLogger(PersonService.class.getName());
 	
 	public Person findById(String id) {
-		
 		logger.info("Finding person...");
 		return mockPerson(1);
 	}
 	
 	public List<Person> findAll() {
-		
 		logger.info("Finding all people...");
 		List<Person> persons = new ArrayList<>();
 		for(int i=0; i<8; i++) {
@@ -29,8 +27,22 @@ public class PersonService {
 		return persons;
 	}
 	
+	public Person create(Person person) {
+		logger.info("Creating person...");
+		return person;
+	}
+	
+	public Person update(Person person) {
+		logger.info("Updating person...");
+		return person;
+	}
+	
+	public void delete(String id) {
+		Person person = findById(id);
+		logger.info("Deleting person...");
+	}
+	
 	public Person mockPerson(int i) {
 		return new Person("John" +i, "Doe" +i, "1910 Marshes Glenn Dr", "12-05-1989");
 	}
-
 }
