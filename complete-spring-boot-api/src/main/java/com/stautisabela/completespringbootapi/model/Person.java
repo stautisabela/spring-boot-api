@@ -37,6 +37,7 @@ public class Person implements Serializable {
 	}
 
 	public Person(String firstName, String lastName, String address, String birthdate) {
+		
 		UUID uuid = UUID.randomUUID();
 		this.id = uuid.toString();
 		this.firstName = firstName;
@@ -88,6 +89,7 @@ public class Person implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
+		
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -100,6 +102,7 @@ public class Person implements Serializable {
 	}
 	
 	public Date formatDate(String date) {
+		
 		SimpleDateFormat sdf = new SimpleDateFormat ("dd-MM-yyyy");
 		try {
 			return sdf.parse(date);
