@@ -7,13 +7,29 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "person")
 public class Person implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	@Id
 	private String id;
+	
+	@Column(name = "first_name")
 	private String firstName;
+	
+	@Column(name = "last_name")
 	private String LastName;
+	
+	@Column
 	private String Address;
+	
+	@Column(name = "birth_date")
 	private Date birthdate;
 	
 	public Person() {
