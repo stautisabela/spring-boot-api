@@ -14,41 +14,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.stautisabela.completespringbootapi.model.Person;
-import com.stautisabela.completespringbootapi.service.PersonService;
+import com.stautisabela.completespringbootapi.model.User;
+import com.stautisabela.completespringbootapi.service.UserService;
 
 
 @RestController
-@RequestMapping("/person")
-public class PersonController {
+@RequestMapping("/user")
+public class UserController {
 	
 	@Autowired
-	private PersonService service;
+	private UserService service;
 	
 	@GetMapping(value="/all",
 				produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Person> findAll() {
+	public List<User> findAll() {
 		return service.findAll();
 	}
 	
 	@GetMapping(value="/{id}",
 				produces = MediaType.APPLICATION_JSON_VALUE)
-	public Person findById(@PathVariable String id) {
+	public User findById(@PathVariable String id) {
 		return service.findById(id);
 	}
 	
 	@PostMapping(value="/new",
 				 produces = MediaType.APPLICATION_JSON_VALUE,
 				 consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Person create(@RequestBody Person person) {
-		return service.create(person);
+	public User create(@RequestBody User user) {
+		return service.create(user);
 	}
 	
 	@PutMapping(value="/{id}",
 				produces = MediaType.APPLICATION_JSON_VALUE,
 				consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Person update(@RequestBody Person person) {
-		return service.update(person);
+	public User update(@RequestBody User user) {
+		return service.update(user);
 	}
 	
 	@DeleteMapping(value="/{id}")

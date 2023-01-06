@@ -1,4 +1,4 @@
-package com.stautisabela.completespringbootapi.model;
+package com.stautisabela.completespringbootapi.data.vo.v1;
 
 import java.io.Serializable;
 import java.text.ParseException;
@@ -13,8 +13,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "person")
-public class Person implements Serializable {
+@Table(name = "user")
+public class UserVO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -32,11 +32,11 @@ public class Person implements Serializable {
 	@Column(name = "birth_date")
 	private Date birthdate;
 	
-	public Person() {
+	public UserVO() {
 		
 	}
 
-	public Person(String firstName, String lastName, String address, String birthdate) {
+	public UserVO(String firstName, String lastName, String address, String birthdate) {
 		
 		UUID uuid = UUID.randomUUID();
 		this.id = uuid.toString();
@@ -96,7 +96,7 @@ public class Person implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Person other = (Person) obj;
+		UserVO other = (UserVO) obj;
 		return Objects.equals(LastName, other.LastName) && Objects.equals(birthdate, other.birthdate)
 				&& Objects.equals(id, other.id);
 	}
