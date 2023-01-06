@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.stautisabela.completespringbootapi.model.User;
+import com.stautisabela.completespringbootapi.data.vo.v1.UserVO;
 import com.stautisabela.completespringbootapi.service.UserService;
 
 
@@ -27,27 +27,27 @@ public class UserController {
 	
 	@GetMapping(value="/all",
 				produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<User> findAll() {
+	public List<com.stautisabela.completespringbootapi.data.vo.v1.UserVO> findAll() {
 		return service.findAll();
 	}
 	
 	@GetMapping(value="/{id}",
 				produces = MediaType.APPLICATION_JSON_VALUE)
-	public User findById(@PathVariable String id) {
+	public UserVO findById(@PathVariable String id) {
 		return service.findById(id);
 	}
 	
 	@PostMapping(value="/new",
 				 produces = MediaType.APPLICATION_JSON_VALUE,
 				 consumes = MediaType.APPLICATION_JSON_VALUE)
-	public User create(@RequestBody User user) {
+	public UserVO create(@RequestBody UserVO user) {
 		return service.create(user);
 	}
 	
 	@PutMapping(value="/{id}",
 				produces = MediaType.APPLICATION_JSON_VALUE,
 				consumes = MediaType.APPLICATION_JSON_VALUE)
-	public User update(@RequestBody User user) {
+	public UserVO update(@RequestBody UserVO user) {
 		return service.update(user);
 	}
 	

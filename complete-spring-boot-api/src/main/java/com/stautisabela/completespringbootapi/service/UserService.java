@@ -6,7 +6,9 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.stautisabela.completespringbootapi.data.vo.v1.UserVO;
 import com.stautisabela.completespringbootapi.exceptions.ResourceNotFoundException;
+import com.stautisabela.completespringbootapi.mapper.DozerMapper;
 import com.stautisabela.completespringbootapi.model.User;
 import com.stautisabela.completespringbootapi.repository.UserRepository;
 
@@ -18,38 +20,41 @@ public class UserService {
 	
 	private Logger logger = Logger.getLogger(UserService.class.getName());
 	
-	public User findById(String id) {
+	public UserVO findById(String id) {
 		
 		logger.info("Finding user...");
-		return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found."));
+		User user = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found."));
+		return DozerMapper.parseObject(user, UserVO.class);
 	}
 	
-	public List<User> findAll() {
+	public List<UserVO> findAll() {
 		
 		logger.info("Finding all users...");
-		return repository.findAll();
+		return DozerMapper.parseObjectsList(repository.findAll(), UserVO.class);
 	}
 	
-	public User create(User user) {
+	public UserVO create(UserVO user) {
 		
 		logger.info("Creating user...");
-		return repository.save(user);
+		User newUser = DozerMapper.parseObject(user, User.class); // converting VO to model so it can be saved in the database
+		return DozerMapper.parseObject(repository.save(newUser), UserVO.class);
 	}
 	
-	public User update(User user) {
+	public UserVO update(UserVO user) {
 		
-		User existingUser = findById(user.getId());
+		User existingUser = repository.findById(user.getId()).orElseThrow(() -> new ResourceNotFoundException("User not found."));
 		logger.info("Updating user...");
+		
 		existingUser.setFirstName(user.getFirstName());
 		existingUser.setLastName(user.getLastName());
 		existingUser.setAddress(user.getAddress());
 		existingUser.setBirthdate(user.getBirthdate());
-		return repository.save(existingUser);
+		return DozerMapper.parseObject(repository.save(existingUser), UserVO.class);
 	}
 	
 	public void delete(String id) {
 		
-		User user = findById(id);
+		User user = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found."));
 		repository.delete(user);
 	}
 }
