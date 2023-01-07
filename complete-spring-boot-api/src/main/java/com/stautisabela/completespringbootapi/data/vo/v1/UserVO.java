@@ -5,33 +5,34 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
-import java.util.UUID;
 
 public class UserVO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String id;
 	private String firstName;
-	private String LastName;
-	private String Address;
-	private Date birthdate;
+	private String lastName;
+	private String address;
+	private String birthdate;
 	
 	public UserVO() {
 		
 	}
 
-	public UserVO(String firstName, String lastName, String address, String birthdate) {
-		
-		UUID uuid = UUID.randomUUID();
-		this.id = uuid.toString();
+	public UserVO(String id, String firstName, String lastName, String address, String birthdate) {
+		this.id = id;
 		this.firstName = firstName;
-		LastName = lastName;
-		Address = address;
-		this.birthdate = formatDate(birthdate);
+		this.lastName = lastName;
+		this.address = address;
+		this.birthdate = birthdate;
 	}
 
 	public String getId() {
 		return id;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -43,32 +44,32 @@ public class UserVO implements Serializable {
 	}
 
 	public String getLastName() {
-		return LastName;
+		return lastName;
 	}
 
 	public void setLastName(String lastName) {
-		LastName = lastName;
+		this.lastName = lastName;
 	}
 
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
 
-	public Date getBirthdate() {
+	public String getBirthdate() {
 		return birthdate;
 	}
 
-	public void setBirthdate(Date birthdate) {
+	public void setBirthdate(String birthdate) {
 		this.birthdate = birthdate;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(LastName, birthdate, id);
+		return Objects.hash(lastName, birthdate, id);
 	}
 
 	@Override
@@ -81,7 +82,7 @@ public class UserVO implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		UserVO other = (UserVO) obj;
-		return Objects.equals(LastName, other.LastName) && Objects.equals(birthdate, other.birthdate)
+		return Objects.equals(lastName, other.lastName) && Objects.equals(birthdate, other.birthdate)
 				&& Objects.equals(id, other.id);
 	}
 	

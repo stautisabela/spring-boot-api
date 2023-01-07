@@ -30,24 +30,27 @@ public class User implements Serializable {
 	private String Address;
 	
 	@Column(name = "birth_date")
-	private Date birthdate;
+	private String birthdate;
 	
 	public User() {
 		
 	}
 
 	public User(String firstName, String lastName, String address, String birthdate) {
-		
 		UUID uuid = UUID.randomUUID();
 		this.id = uuid.toString();
 		this.firstName = firstName;
 		LastName = lastName;
 		Address = address;
-		this.birthdate = formatDate(birthdate);
+		this.birthdate = birthdate;
 	}
 
 	public String getId() {
 		return id;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -74,11 +77,11 @@ public class User implements Serializable {
 		Address = address;
 	}
 
-	public Date getBirthdate() {
+	public String getBirthdate() {
 		return birthdate;
 	}
 
-	public void setBirthdate(Date birthdate) {
+	public void setBirthdate(String birthdate) {
 		this.birthdate = birthdate;
 	}
 
@@ -102,7 +105,6 @@ public class User implements Serializable {
 	}
 	
 	public Date formatDate(String date) {
-		
 		SimpleDateFormat sdf = new SimpleDateFormat ("dd-MM-yyyy");
 		try {
 			return sdf.parse(date);

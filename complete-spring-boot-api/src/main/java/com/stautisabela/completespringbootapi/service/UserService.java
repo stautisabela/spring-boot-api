@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.stautisabela.completespringbootapi.data.vo.v1.UserVO;
 import com.stautisabela.completespringbootapi.exceptions.ResourceNotFoundException;
-import com.stautisabela.completespringbootapi.mapper.DozerMapper;
+import com.stautisabela.completespringbootapi.mapper.EntityMapper;
 import com.stautisabela.completespringbootapi.model.User;
 import com.stautisabela.completespringbootapi.repository.UserRepository;
 
@@ -21,27 +21,26 @@ public class UserService {
 	private Logger logger = Logger.getLogger(UserService.class.getName());
 	
 	public UserVO findById(String id) {
-		
 		logger.info("Finding user...");
+		
 		User user = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found."));
-		return DozerMapper.parseObject(user, UserVO.class);
+		return EntityMapper.parseObjectToVO(user);
 	}
 	
 	public List<UserVO> findAll() {
-		
 		logger.info("Finding all users...");
-		return DozerMapper.parseObjectsList(repository.findAll(), UserVO.class);
+		
+		return EntityMapper.parseObjectListToVOList(repository.findAll());
 	}
 	
 	public UserVO create(UserVO user) {
-		
 		logger.info("Creating user...");
-		User newUser = DozerMapper.parseObject(user, User.class); // converting VO to model so it can be saved in the database
-		return DozerMapper.parseObject(repository.save(newUser), UserVO.class);
+		
+		User newUser = EntityMapper.parseVOToObject(user); // converting VO to model so it can be saved in the database
+		return EntityMapper.parseObjectToVO(newUser);
 	}
 	
 	public UserVO update(UserVO user) {
-		
 		User existingUser = repository.findById(user.getId()).orElseThrow(() -> new ResourceNotFoundException("User not found."));
 		logger.info("Updating user...");
 		
@@ -49,10 +48,11 @@ public class UserService {
 		existingUser.setLastName(user.getLastName());
 		existingUser.setAddress(user.getAddress());
 		existingUser.setBirthdate(user.getBirthdate());
-		return DozerMapper.parseObject(repository.save(existingUser), UserVO.class);
+		return EntityMapper.parseObjectToVO(repository.save(existingUser));
 	}
 	
 	public void delete(String id) {
+		logger.info("Deleting user...");
 		
 		User user = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found."));
 		repository.delete(user);
