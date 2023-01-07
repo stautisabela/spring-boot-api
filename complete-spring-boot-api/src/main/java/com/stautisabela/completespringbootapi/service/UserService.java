@@ -19,27 +19,27 @@ public class UserService {
 	private Logger logger = Logger.getLogger(UserService.class.getName());
 	
 	public User findById(String id) {
-		
 		logger.info("Finding user...");
+		
 		return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found."));
 	}
 	
 	public List<User> findAll() {
-		
 		logger.info("Finding all users...");
+		
 		return repository.findAll();
 	}
 	
 	public User create(User user) {
-		
 		logger.info("Creating user...");
+		
 		return repository.save(user);
 	}
 	
 	public User update(User user) {
-		
 		User existingUser = findById(user.getId());
 		logger.info("Updating user...");
+		
 		existingUser.setFirstName(user.getFirstName());
 		existingUser.setLastName(user.getLastName());
 		existingUser.setAddress(user.getAddress());
@@ -48,6 +48,7 @@ public class UserService {
 	}
 	
 	public void delete(String id) {
+		logger.info("Deleting user...");
 		
 		User user = findById(id);
 		repository.delete(user);
