@@ -24,25 +24,25 @@ public class User implements Serializable {
 	private String firstName;
 	
 	@Column(name = "last_name")
-	private String LastName;
+	private String lastName;
 	
 	@Column
-	private String Address;
+	private String address;
 	
 	@Column(name = "birth_date")
-	private String birthdate;
+	private String birthDate;
 	
 	public User() {
 		
 	}
 
-	public User(String firstName, String lastName, String address, String birthdate) {
+	public User(String firstName, String lastName, String address, String birthDate) {
 		UUID uuid = UUID.randomUUID();
 		this.id = uuid.toString();
 		this.firstName = firstName;
-		LastName = lastName;
-		Address = address;
-		this.birthdate = birthdate;
+		this.lastName = lastName;
+		this.address = address;
+		this.birthDate = birthDate;
 	}
 
 	public String getId() {
@@ -62,32 +62,32 @@ public class User implements Serializable {
 	}
 
 	public String getLastName() {
-		return LastName;
+		return lastName;
 	}
 
 	public void setLastName(String lastName) {
-		LastName = lastName;
+		this.lastName = lastName;
 	}
 
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
 
 	public String getBirthdate() {
-		return birthdate;
+		return birthDate;
 	}
 
-	public void setBirthdate(String birthdate) {
-		this.birthdate = birthdate;
+	public void setBirthdate(String birthDate) {
+		this.birthDate = birthDate;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(LastName, birthdate, id);
+		return Objects.hash(lastName, birthDate, id);
 	}
 
 	@Override
@@ -100,7 +100,7 @@ public class User implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(LastName, other.LastName) && Objects.equals(birthdate, other.birthdate)
+		return Objects.equals(lastName, other.lastName) && Objects.equals(birthDate, other.birthDate)
 				&& Objects.equals(id, other.id);
 	}
 	

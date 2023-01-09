@@ -6,8 +6,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 
-import com.stautisabela.completespringbootapi.data.vo.v1.UserVO;
+import com.stautisabela.completespringbootapi.data.vo.UserVO;
 import com.stautisabela.completespringbootapi.mapper.EntityMapper;
 import com.stautisabela.completespringbootapi.model.User;
 import com.stautisabela.completespringbootapi.unittests.mapper.mocks.MockUser;
@@ -15,6 +16,9 @@ import com.stautisabela.completespringbootapi.unittests.mapper.mocks.MockUser;
 public class EntityMapperTest {
 	
 	MockUser mock;
+	
+	@InjectMocks
+	private EntityMapper mapper;
 	
 	@BeforeEach
 	public void setUp() {
@@ -24,7 +28,7 @@ public class EntityMapperTest {
 	@Test
 	public void parseObjectToVOTest() {
 		User inputUser = mock.mockUser(0);
-		UserVO outputUser = EntityMapper.parseObjectToVO(inputUser);
+		UserVO outputUser = mapper.parseObjectToVO(inputUser);
 		
 		assertEquals(inputUser.getId(), outputUser.getId());
 		assertEquals("First Name0", outputUser.getFirstName());
@@ -36,7 +40,7 @@ public class EntityMapperTest {
 	@Test
 	public void parseVOToObjectTest() {
 		UserVO inputUser = mock.mockUserVO(0);
-		User outputUser = EntityMapper.parseVOToObject(inputUser);
+		User outputUser = mapper.parseVOToObject(inputUser);
 		
 		assertEquals("ID0", outputUser.getId());
 		assertEquals("First Name0", outputUser.getFirstName());
@@ -48,7 +52,7 @@ public class EntityMapperTest {
 	@Test
 	public void parseObjectListToVOListTest() {
 		List<User> inputList = mock.mockUserList();
-		List<UserVO> outputList = EntityMapper.parseObjectListToVOList(inputList);
+		List<UserVO> outputList = mapper.parseObjectListToVOList(inputList);
 		
 		UserVO userZero = outputList.get(0);
 		assertEquals(inputList.get(0).getId(), userZero.getId());
@@ -75,7 +79,7 @@ public class EntityMapperTest {
 	@Test
 	public void parseVOListToObjectListTest() {
 		List<UserVO> inputList = mock.mockUserVOList();
-		List<User> outputList = EntityMapper.parseVOListToObjectList(inputList);
+		List<User> outputList = mapper.parseVOListToObjectList(inputList);
 		
 		User userZero = outputList.get(0);
 		assertEquals("ID0", userZero.getId());
@@ -97,6 +101,5 @@ public class EntityMapperTest {
 		assertEquals("Last Name4", userFour.getLastName());
 		assertEquals("Address4", userFour.getAddress());
 		assertEquals("01-06-2023", userFour.getBirthdate());
-		
 	}
 }

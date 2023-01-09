@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.stautisabela.completespringbootapi.data.vo.v1.UserVO;
+import com.stautisabela.completespringbootapi.data.vo.UserVO;
 import com.stautisabela.completespringbootapi.exceptions.ResourceNotFoundException;
 import com.stautisabela.completespringbootapi.mapper.EntityMapper;
 import com.stautisabela.completespringbootapi.model.User;
@@ -18,26 +18,29 @@ public class UserService {
 	@Autowired
 	UserRepository repository;
 	
+	@Autowired
+	EntityMapper mapper;
+	
 	private Logger logger = Logger.getLogger(UserService.class.getName());
 	
 	public UserVO findById(String id) {
 		logger.info("Finding user...");
 		
 		User user = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found."));
-		return EntityMapper.parseObjectToVO(user);
+		return mapper.parseObjectToVO(user);
 	}
 	
 	public List<UserVO> findAll() {
 		logger.info("Finding all users...");
 		
-		return EntityMapper.parseObjectListToVOList(repository.findAll());
+		return mapper.parseObjectListToVOList(repository.findAll());
 	}
 	
 	public UserVO create(UserVO user) {
 		logger.info("Creating user...");
 		
-		User newUser = EntityMapper.parseVOToObject(user); // converting VO to model so it can be saved in the database
-		return EntityMapper.parseObjectToVO(newUser);
+		User newUser = mapper.parseVOToObject(user); // converting VO to model so it can be saved in the database
+		return mapper.parseObjectToVO(newUser);
 	}
 	
 	public UserVO update(UserVO user) {
@@ -48,7 +51,7 @@ public class UserService {
 		existingUser.setLastName(user.getLastName());
 		existingUser.setAddress(user.getAddress());
 		existingUser.setBirthdate(user.getBirthdate());
-		return EntityMapper.parseObjectToVO(repository.save(existingUser));
+		return mapper.parseObjectToVO(repository.save(existingUser));
 	}
 	
 	public void delete(String id) {

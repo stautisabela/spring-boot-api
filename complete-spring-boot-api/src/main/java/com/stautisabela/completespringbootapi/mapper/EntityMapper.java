@@ -3,12 +3,15 @@ package com.stautisabela.completespringbootapi.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.stautisabela.completespringbootapi.data.vo.v1.UserVO;
+import org.springframework.stereotype.Service;
+
+import com.stautisabela.completespringbootapi.data.vo.UserVO;
 import com.stautisabela.completespringbootapi.model.User;
 
+@Service
 public class EntityMapper {
 
-	public static UserVO parseObjectToVO(User user) {
+	public UserVO parseObjectToVO(User user) {
 		UserVO userVO = new UserVO();
 		userVO.setId(user.getId());
 		userVO.setFirstName(user.getFirstName());
@@ -18,7 +21,7 @@ public class EntityMapper {
 		return userVO;
 	}
 	
-	public static User parseVOToObject(UserVO userVO) {
+	public User parseVOToObject(UserVO userVO) {
 		User user = new User();
 		user.setId(userVO.getId());
 		user.setFirstName(userVO.getFirstName());
@@ -28,7 +31,7 @@ public class EntityMapper {
 		return user;
 	}
 	
-	public static List<UserVO> parseObjectListToVOList(List<User> users) {
+	public List<UserVO> parseObjectListToVOList(List<User> users) {
 		List<UserVO> parsedList = new ArrayList<>();
 		for(User user : users) {
 			UserVO parsedUser = parseObjectToVO(user);
@@ -37,7 +40,7 @@ public class EntityMapper {
 		return parsedList;
 	}
 	
-	public static List<User> parseVOListToObjectList(List<UserVO> users) {
+	public List<User> parseVOListToObjectList(List<UserVO> users) {
 		List<User> parsedList = new ArrayList<>();
 		for(UserVO user : users) {
 			User parsedUser = parseVOToObject(user);

@@ -1,4 +1,4 @@
-package com.stautisabela.completespringbootapi.data.vo.v1;
+package com.stautisabela.completespringbootapi.data.vo;
 
 import java.io.Serializable;
 import java.text.ParseException;
@@ -13,18 +13,18 @@ public class UserVO implements Serializable {
 	private String firstName;
 	private String lastName;
 	private String address;
-	private String birthdate;
+	private String birthDate;
 	
 	public UserVO() {
 		
 	}
 
-	public UserVO(String id, String firstName, String lastName, String address, String birthdate) {
+	public UserVO(String id, String firstName, String lastName, String address, String birthDate) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
-		this.birthdate = birthdate;
+		this.birthDate = birthDate;
 	}
 
 	public String getId() {
@@ -60,16 +60,16 @@ public class UserVO implements Serializable {
 	}
 
 	public String getBirthdate() {
-		return birthdate;
+		return birthDate;
 	}
 
-	public void setBirthdate(String birthdate) {
-		this.birthdate = birthdate;
+	public void setBirthdate(String birthDate) {
+		this.birthDate = birthDate;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(lastName, birthdate, id);
+		return Objects.hash(lastName, birthDate, id);
 	}
 
 	@Override
@@ -82,7 +82,7 @@ public class UserVO implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		UserVO other = (UserVO) obj;
-		return Objects.equals(lastName, other.lastName) && Objects.equals(birthdate, other.birthdate)
+		return Objects.equals(lastName, other.lastName) && Objects.equals(birthDate, other.birthDate)
 				&& Objects.equals(id, other.id);
 	}
 	

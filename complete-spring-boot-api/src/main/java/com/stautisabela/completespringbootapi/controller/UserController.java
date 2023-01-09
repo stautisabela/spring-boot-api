@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.stautisabela.completespringbootapi.data.vo.v1.UserVO;
+import com.stautisabela.completespringbootapi.data.vo.UserVO;
 import com.stautisabela.completespringbootapi.service.UserService;
 
 
@@ -27,7 +27,7 @@ public class UserController {
 	
 	@GetMapping(value="/all",
 				produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<com.stautisabela.completespringbootapi.data.vo.v1.UserVO> findAll() {
+	public List<com.stautisabela.completespringbootapi.data.vo.UserVO> findAll() {
 		return service.findAll();
 	}
 	
