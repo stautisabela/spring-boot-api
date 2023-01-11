@@ -6,9 +6,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 
-import com.stautisabela.completespringbootapi.data.vo.UserVO;
+import com.stautisabela.completespringbootapi.data.vo.v1.UserVO;
 import com.stautisabela.completespringbootapi.mapper.EntityMapper;
 import com.stautisabela.completespringbootapi.model.User;
 import com.stautisabela.completespringbootapi.unittests.mapper.mocks.MockUser;
@@ -16,13 +15,12 @@ import com.stautisabela.completespringbootapi.unittests.mapper.mocks.MockUser;
 public class EntityMapperTest {
 	
 	MockUser mock;
-	
-	@InjectMocks
-	private EntityMapper mapper;
+	EntityMapper mapper;
 	
 	@BeforeEach
 	public void setUp() {
 		mock = new MockUser();
+		mapper = new EntityMapper();
 	}
 	
 	@Test

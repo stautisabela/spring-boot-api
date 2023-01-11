@@ -1,4 +1,4 @@
-package com.stautisabela.completespringbootapi.data.vo;
+package com.stautisabela.completespringbootapi.data.vo.v1;
 
 import java.io.Serializable;
 import java.text.ParseException;

@@ -3,7 +3,7 @@ package com.stautisabela.completespringbootapi.unittests.mapper.mocks;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.stautisabela.completespringbootapi.data.vo.UserVO;
+import com.stautisabela.completespringbootapi.data.vo.v1.UserVO;
 import com.stautisabela.completespringbootapi.model.User;
 
 public class MockUser {

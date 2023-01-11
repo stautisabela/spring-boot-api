@@ -5,10 +5,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
-import java.util.UUID;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -18,6 +20,8 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	private String id;
 	
 	@Column(name = "first_name")
@@ -33,12 +37,9 @@ public class User implements Serializable {
 	private String birthDate;
 	
 	public User() {
-		
 	}
 
 	public User(String firstName, String lastName, String address, String birthDate) {
-		UUID uuid = UUID.randomUUID();
-		this.id = uuid.toString();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;

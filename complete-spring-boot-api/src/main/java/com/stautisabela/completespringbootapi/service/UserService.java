@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.stautisabela.completespringbootapi.data.vo.UserVO;
+import com.stautisabela.completespringbootapi.data.vo.v1.UserVO;
 import com.stautisabela.completespringbootapi.exceptions.ResourceNotFoundException;
 import com.stautisabela.completespringbootapi.mapper.EntityMapper;
 import com.stautisabela.completespringbootapi.model.User;
@@ -40,7 +40,7 @@ public class UserService {
 		logger.info("Creating user...");
 		
 		User newUser = mapper.parseVOToObject(user); // converting VO to model so it can be saved in the database
-		return mapper.parseObjectToVO(newUser);
+		return mapper.parseObjectToVO(repository.save(newUser));
 	}
 	
 	public UserVO update(UserVO user) {
