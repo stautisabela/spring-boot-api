@@ -59,11 +59,11 @@ public class UserVO implements Serializable {
 		this.address = address;
 	}
 
-	public String getBirthdate() {
+	public String getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthdate(String birthDate) {
+	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
 

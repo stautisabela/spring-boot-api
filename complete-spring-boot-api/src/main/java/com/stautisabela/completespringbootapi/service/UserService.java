@@ -50,7 +50,7 @@ public class UserService {
 		existingUser.setFirstName(user.getFirstName());
 		existingUser.setLastName(user.getLastName());
 		existingUser.setAddress(user.getAddress());
-		existingUser.setBirthdate(user.getBirthdate());
+		existingUser.setBirthDate(user.getBirthDate());
 		return mapper.parseObjectToVO(repository.save(existingUser));
 	}
 	

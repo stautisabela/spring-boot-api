@@ -17,7 +17,7 @@ public class EntityMapper {
 		userVO.setFirstName(user.getFirstName());
 		userVO.setLastName(user.getLastName());
 		userVO.setAddress(user.getAddress());
-		userVO.setBirthdate(user.getBirthdate());
+		userVO.setBirthDate(user.getBirthDate());
 		return userVO;
 	}
 	
@@ -27,7 +27,7 @@ public class EntityMapper {
 		user.setFirstName(userVO.getFirstName());
 		user.setLastName(userVO.getLastName());
 		user.setAddress(userVO.getAddress());
-		user.setBirthdate(userVO.getBirthdate());
+		user.setBirthDate(userVO.getBirthDate());
 		return user;
 	}
 	
