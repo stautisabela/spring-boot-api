@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
+
 public class UserVO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -19,7 +20,7 @@ public class UserVO implements Serializable {
 		
 	}
 
-	public UserVO(String id, String firstName, String lastName, String address, String birthDate) {
+	public UserVO(String id, String firstName, String lastName, String birthDate, String address) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;

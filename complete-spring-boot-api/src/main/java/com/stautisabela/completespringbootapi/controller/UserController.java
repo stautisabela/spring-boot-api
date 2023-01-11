@@ -26,27 +26,27 @@ public class UserController {
 	private UserService service;
 	
 	@GetMapping(value="/all",
-				produces = MediaType.APPLICATION_JSON_VALUE)
+				produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public List<com.stautisabela.completespringbootapi.data.vo.v1.UserVO> findAll() {
 		return service.findAll();
 	}
 	
 	@GetMapping(value="/{id}",
-				produces = MediaType.APPLICATION_JSON_VALUE)
+			produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public UserVO findById(@PathVariable String id) {
 		return service.findById(id);
 	}
 	
 	@PostMapping(value="/new",
-				 produces = MediaType.APPLICATION_JSON_VALUE,
-				 consumes = MediaType.APPLICATION_JSON_VALUE)
+				 produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+				 consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public UserVO create(@RequestBody UserVO user) {
 		return service.create(user);
 	}
 	
 	@PutMapping(value="/{id}",
-				produces = MediaType.APPLICATION_JSON_VALUE,
-				consumes = MediaType.APPLICATION_JSON_VALUE)
+				produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+				consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public UserVO update(@RequestBody UserVO user) {
 		return service.update(user);
 	}
