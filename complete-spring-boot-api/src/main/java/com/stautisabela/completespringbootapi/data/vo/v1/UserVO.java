@@ -6,10 +6,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
+import org.springframework.hateoas.RepresentationModel;
 
-public class UserVO implements Serializable {
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonPropertyOrder({"id", "firstName", "lastName", "address", "birthDate"})
+public class UserVO extends RepresentationModel<UserVO> implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	@JsonProperty("id")
 	private String userId;
 	private String firstName;
 	private String lastName;
@@ -21,6 +27,7 @@ public class UserVO implements Serializable {
 	}
 
 	public UserVO(String userId, String firstName, String lastName, String birthDate, String address) {
+		
 		this.userId = userId;
 		this.firstName = firstName;
 		this.lastName = lastName;

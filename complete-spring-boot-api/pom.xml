@@ -31,7 +31,7 @@
 		
 		<dependency>
 			<groupId>org.springframework.hateoas</groupId>
-			<artifactId>spring-hateoas</artifactId>
+   			<artifactId>spring-hateoas</artifactId>
 		</dependency>
 		
 		<dependency>
