@@ -44,7 +44,7 @@ public class UserService {
 	}
 	
 	public UserVO update(UserVO user) {
-		User existingUser = repository.findById(user.getId()).orElseThrow(() -> new ResourceNotFoundException("User not found."));
+		User existingUser = repository.findById(user.getUserId()).orElseThrow(() -> new ResourceNotFoundException("User not found."));
 		logger.info("Updating user...");
 		
 		existingUser.setFirstName(user.getFirstName());

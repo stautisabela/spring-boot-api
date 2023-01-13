@@ -10,7 +10,7 @@ import java.util.Objects;
 public class UserVO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private String id;
+	private String userId;
 	private String firstName;
 	private String lastName;
 	private String address;
@@ -20,20 +20,20 @@ public class UserVO implements Serializable {
 		
 	}
 
-	public UserVO(String id, String firstName, String lastName, String birthDate, String address) {
-		this.id = id;
+	public UserVO(String userId, String firstName, String lastName, String birthDate, String address) {
+		this.userId = userId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
 		this.birthDate = birthDate;
 	}
 
-	public String getId() {
-		return id;
+	public String getUserId() {
+		return userId;
 	}
 	
-	public void setId(String id) {
-		this.id = id;
+	public void setUserId(String id) {
+		this.userId = id;
 	}
 
 	public String getFirstName() {
@@ -70,7 +70,7 @@ public class UserVO implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(lastName, birthDate, id);
+		return Objects.hash(lastName, birthDate, userId);
 	}
 
 	@Override
@@ -84,7 +84,7 @@ public class UserVO implements Serializable {
 			return false;
 		UserVO other = (UserVO) obj;
 		return Objects.equals(lastName, other.lastName) && Objects.equals(birthDate, other.birthDate)
-				&& Objects.equals(id, other.id);
+				&& Objects.equals(userId, other.userId);
 	}
 	
 	public Date formatDate(String date) {

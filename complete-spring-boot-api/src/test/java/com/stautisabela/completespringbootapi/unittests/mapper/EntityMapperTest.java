@@ -28,7 +28,7 @@ public class EntityMapperTest {
 		User inputUser = mock.mockUser(0);
 		UserVO outputUser = mapper.parseObjectToVO(inputUser);
 		
-		assertEquals(inputUser.getId(), outputUser.getId());
+		assertEquals(inputUser.getUserId(), outputUser.getUserId());
 		assertEquals("First Name0", outputUser.getFirstName());
 		assertEquals("Last Name0", outputUser.getLastName());
 		assertEquals("Address0", outputUser.getAddress());
@@ -40,7 +40,7 @@ public class EntityMapperTest {
 		UserVO inputUser = mock.mockUserVO(0);
 		User outputUser = mapper.parseVOToObject(inputUser);
 		
-		assertEquals("ID0", outputUser.getId());
+		assertEquals("ID0", outputUser.getUserId());
 		assertEquals("First Name0", outputUser.getFirstName());
 		assertEquals("Last Name0", outputUser.getLastName());
 		assertEquals("Address0", outputUser.getAddress());
@@ -53,21 +53,21 @@ public class EntityMapperTest {
 		List<UserVO> outputList = mapper.parseObjectListToVOList(inputList);
 		
 		UserVO userZero = outputList.get(0);
-		assertEquals(inputList.get(0).getId(), userZero.getId());
+		assertEquals(inputList.get(0).getUserId(), userZero.getUserId());
 		assertEquals("First Name0", userZero.getFirstName());
 		assertEquals("Last Name0", userZero.getLastName());
 		assertEquals("Address0", userZero.getAddress());
 		assertEquals("01-06-2023", userZero.getBirthDate());
 		
 		UserVO userTwo = outputList.get(2);
-		assertEquals(inputList.get(2).getId(), userTwo.getId());
+		assertEquals(inputList.get(2).getUserId(), userTwo.getUserId());
 		assertEquals("First Name2", userTwo.getFirstName());
 		assertEquals("Last Name2", userTwo.getLastName());
 		assertEquals("Address2", userTwo.getAddress());
 		assertEquals("01-06-2023", userTwo.getBirthDate());
 		
 		UserVO userFour = outputList.get(4);
-		assertEquals(inputList.get(4).getId(), userFour.getId());
+		assertEquals(inputList.get(4).getUserId(), userFour.getUserId());
 		assertEquals("First Name4", userFour.getFirstName());
 		assertEquals("Last Name4", userFour.getLastName());
 		assertEquals("Address4", userFour.getAddress());
@@ -80,21 +80,21 @@ public class EntityMapperTest {
 		List<User> outputList = mapper.parseVOListToObjectList(inputList);
 		
 		User userZero = outputList.get(0);
-		assertEquals("ID0", userZero.getId());
+		assertEquals("ID0", userZero.getUserId());
 		assertEquals("First Name0", userZero.getFirstName());
 		assertEquals("Last Name0", userZero.getLastName());
 		assertEquals("Address0", userZero.getAddress());
 		assertEquals("01-06-2023", userZero.getBirthDate());
 		
 		User userTwo = outputList.get(2);
-		assertEquals("ID2", userTwo.getId());
+		assertEquals("ID2", userTwo.getUserId());
 		assertEquals("First Name2", userTwo.getFirstName());
 		assertEquals("Last Name2", userTwo.getLastName());
 		assertEquals("Address2", userTwo.getAddress());
 		assertEquals("01-06-2023", userTwo.getBirthDate());
 		
 		User userFour = outputList.get(4);
-		assertEquals("ID4", userFour.getId());
+		assertEquals("ID4", userFour.getUserId());
 		assertEquals("First Name4", userFour.getFirstName());
 		assertEquals("Last Name4", userFour.getLastName());
 		assertEquals("Address4", userFour.getAddress());

@@ -13,7 +13,7 @@ public class EntityMapper {
 
 	public UserVO parseObjectToVO(User user) {
 		UserVO userVO = new UserVO();
-		userVO.setId(user.getId());
+		userVO.setUserId(user.getUserId());
 		userVO.setFirstName(user.getFirstName());
 		userVO.setLastName(user.getLastName());
 		userVO.setAddress(user.getAddress());
@@ -23,7 +23,7 @@ public class EntityMapper {
 	
 	public User parseVOToObject(UserVO userVO) {
 		User user = new User();
-		user.setId(userVO.getId());
+		user.setUserId(userVO.getUserId());
 		user.setFirstName(userVO.getFirstName());
 		user.setLastName(userVO.getLastName());
 		user.setAddress(userVO.getAddress());

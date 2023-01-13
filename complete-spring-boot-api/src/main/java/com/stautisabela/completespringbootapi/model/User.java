@@ -20,7 +20,7 @@ public class User implements Serializable {
 	@Id
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	private String id;
+	private String userId;
 	
 	@Column(name = "first_name")
 	private String firstName;
@@ -44,12 +44,12 @@ public class User implements Serializable {
 		this.birthDate = birthDate;
 	}
 
-	public String getId() {
-		return id;
+	public String getUserId() {
+		return userId;
 	}
 	
-	public void setId(String id) {
-		this.id = id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getFirstName() {
@@ -86,7 +86,7 @@ public class User implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(lastName, birthDate, id);
+		return Objects.hash(lastName, birthDate, userId);
 	}
 
 	@Override
@@ -100,7 +100,7 @@ public class User implements Serializable {
 			return false;
 		User other = (User) obj;
 		return Objects.equals(lastName, other.lastName) && Objects.equals(birthDate, other.birthDate)
-				&& Objects.equals(id, other.id);
+				&& Objects.equals(userId, other.userId);
 	}
 	
 	public Date formatDate(String date) {
