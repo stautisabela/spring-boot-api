@@ -29,10 +29,10 @@ public class EntityMapperTest {
 		UserVO outputUser = mapper.parseObjectToVO(inputUser);
 		
 		assertEquals(inputUser.getUserId(), outputUser.getUserId());
-		assertEquals("First Name0", outputUser.getFirstName());
-		assertEquals("Last Name0", outputUser.getLastName());
-		assertEquals("Address0", outputUser.getAddress());
-		assertEquals("01-06-2023", outputUser.getBirthDate());
+		assertEquals(inputUser.getFirstName(), outputUser.getFirstName());
+		assertEquals(inputUser.getLastName(), outputUser.getLastName());
+		assertEquals(inputUser.getAddress(), outputUser.getAddress());
+		assertEquals(inputUser.getBirthDate(), outputUser.getBirthDate());
 	}
 	
 	@Test
@@ -40,11 +40,11 @@ public class EntityMapperTest {
 		UserVO inputUser = mock.mockUserVO(0);
 		User outputUser = mapper.parseVOToObject(inputUser);
 		
-		assertEquals("ID0", outputUser.getUserId());
-		assertEquals("First Name0", outputUser.getFirstName());
-		assertEquals("Last Name0", outputUser.getLastName());
-		assertEquals("Address0", outputUser.getAddress());
-		assertEquals("01-06-2023", outputUser.getBirthDate());
+		assertEquals(inputUser.getUserId(), outputUser.getUserId());
+		assertEquals(inputUser.getFirstName(), outputUser.getFirstName());
+		assertEquals(inputUser.getLastName(), outputUser.getLastName());
+		assertEquals(inputUser.getAddress(), outputUser.getAddress());
+		assertEquals(inputUser.getBirthDate(), outputUser.getBirthDate());
 	}
 	
 	@Test
@@ -54,24 +54,24 @@ public class EntityMapperTest {
 		
 		UserVO userZero = outputList.get(0);
 		assertEquals(inputList.get(0).getUserId(), userZero.getUserId());
-		assertEquals("First Name0", userZero.getFirstName());
-		assertEquals("Last Name0", userZero.getLastName());
-		assertEquals("Address0", userZero.getAddress());
-		assertEquals("01-06-2023", userZero.getBirthDate());
+		assertEquals(inputList.get(0).getFirstName(), userZero.getFirstName());
+		assertEquals(inputList.get(0).getLastName(), userZero.getLastName());
+		assertEquals(inputList.get(0).getAddress(), userZero.getAddress());
+		assertEquals(inputList.get(0).getBirthDate(), userZero.getBirthDate());
 		
 		UserVO userTwo = outputList.get(2);
 		assertEquals(inputList.get(2).getUserId(), userTwo.getUserId());
-		assertEquals("First Name2", userTwo.getFirstName());
-		assertEquals("Last Name2", userTwo.getLastName());
-		assertEquals("Address2", userTwo.getAddress());
-		assertEquals("01-06-2023", userTwo.getBirthDate());
+		assertEquals(inputList.get(2).getFirstName(), userTwo.getFirstName());
+		assertEquals(inputList.get(2).getLastName(), userTwo.getLastName());
+		assertEquals(inputList.get(2).getAddress(), userTwo.getAddress());
+		assertEquals(inputList.get(2).getBirthDate(), userTwo.getBirthDate());
 		
 		UserVO userFour = outputList.get(4);
 		assertEquals(inputList.get(4).getUserId(), userFour.getUserId());
-		assertEquals("First Name4", userFour.getFirstName());
-		assertEquals("Last Name4", userFour.getLastName());
-		assertEquals("Address4", userFour.getAddress());
-		assertEquals("01-06-2023", userFour.getBirthDate());
+		assertEquals(inputList.get(4).getFirstName(), userFour.getFirstName());
+		assertEquals(inputList.get(4).getLastName(), userFour.getLastName());
+		assertEquals(inputList.get(4).getAddress(), userFour.getAddress());
+		assertEquals(inputList.get(4).getBirthDate(), userFour.getBirthDate());
 	}
 	
 	@Test
@@ -80,24 +80,24 @@ public class EntityMapperTest {
 		List<User> outputList = mapper.parseVOListToObjectList(inputList);
 		
 		User userZero = outputList.get(0);
-		assertEquals("ID0", userZero.getUserId());
-		assertEquals("First Name0", userZero.getFirstName());
-		assertEquals("Last Name0", userZero.getLastName());
-		assertEquals("Address0", userZero.getAddress());
-		assertEquals("01-06-2023", userZero.getBirthDate());
+		assertEquals(inputList.get(0).getUserId(), userZero.getUserId());
+		assertEquals(inputList.get(0).getFirstName(), userZero.getFirstName());
+		assertEquals(inputList.get(0).getLastName(), userZero.getLastName());
+		assertEquals(inputList.get(0).getAddress(), userZero.getAddress());
+		assertEquals(inputList.get(0).getBirthDate(), userZero.getBirthDate());
 		
 		User userTwo = outputList.get(2);
-		assertEquals("ID2", userTwo.getUserId());
-		assertEquals("First Name2", userTwo.getFirstName());
-		assertEquals("Last Name2", userTwo.getLastName());
-		assertEquals("Address2", userTwo.getAddress());
-		assertEquals("01-06-2023", userTwo.getBirthDate());
+		assertEquals(inputList.get(2).getUserId(), userTwo.getUserId());
+		assertEquals(inputList.get(2).getFirstName(), userTwo.getFirstName());
+		assertEquals(inputList.get(2).getLastName(), userTwo.getLastName());
+		assertEquals(inputList.get(2).getAddress(), userTwo.getAddress());
+		assertEquals(inputList.get(2).getBirthDate(), userTwo.getBirthDate());
 		
 		User userFour = outputList.get(4);
-		assertEquals("ID4", userFour.getUserId());
-		assertEquals("First Name4", userFour.getFirstName());
-		assertEquals("Last Name4", userFour.getLastName());
-		assertEquals("Address4", userFour.getAddress());
-		assertEquals("01-06-2023", userFour.getBirthDate());
+		assertEquals(inputList.get(4).getUserId(), userFour.getUserId());
+		assertEquals(inputList.get(4).getFirstName(), userFour.getFirstName());
+		assertEquals(inputList.get(4).getLastName(), userFour.getLastName());
+		assertEquals(inputList.get(4).getAddress(), userFour.getAddress());
+		assertEquals(inputList.get(4).getBirthDate(), userFour.getBirthDate());
 	}
 }

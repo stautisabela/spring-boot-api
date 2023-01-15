@@ -10,6 +10,7 @@ public class MockUser {
 	
 	public User mockUser(Integer num) {
 		User user = new User("First Name"+num, "Last Name"+num, "Address"+num, "01-06-2023");
+		user.setUserId("ID"+num);
 		return user;
 	}
 	

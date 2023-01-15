@@ -26,7 +26,7 @@ public class UserVO extends RepresentationModel<UserVO> implements Serializable 
 		
 	}
 
-	public UserVO(String userId, String firstName, String lastName, String birthDate, String address) {
+	public UserVO(String userId, String firstName, String lastName, String address, String birthDate) {
 		
 		this.userId = userId;
 		this.firstName = firstName;
