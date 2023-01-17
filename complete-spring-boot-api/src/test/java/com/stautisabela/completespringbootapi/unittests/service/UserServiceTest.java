@@ -3,6 +3,7 @@ package com.stautisabela.completespringbootapi.unittests.service;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -66,7 +67,45 @@ class UserServiceTest {
 
 	@Test
 	void testFindAll() {
-		fail("Not yet implemented");
+		List<User> inputUserList = mock.mockUserList();
+		List<UserVO> inputUserVOList = mock.mockUserVOList();
+		
+		when(repository.findAll()).thenReturn(inputUserList);
+		when(mapper.parseObjectListToVOList(inputUserList)).thenReturn(inputUserVOList);
+		
+		var outputUserList = service.findAll();
+		assertNotNull(outputUserList);
+		assertEquals(5, outputUserList.size());
+		
+		var outputUserZero = outputUserList.get(0);
+		assertNotNull(outputUserZero);
+		assertNotNull(outputUserZero.getUserId());
+		assertNotNull(outputUserZero.getLinks());
+		assertTrue(outputUserZero.toString().contains("links: [</v1/user/ID0>;rel=\"self\"]"));
+		assertEquals(inputUserList.get(0).getFirstName(), outputUserZero.getFirstName());
+		assertEquals(inputUserList.get(0).getLastName(), outputUserZero.getLastName());
+		assertEquals(inputUserList.get(0).getAddress(), outputUserZero.getAddress());
+		assertEquals(inputUserList.get(0).getBirthDate(), outputUserZero.getBirthDate());
+		
+		var outputUserThree = outputUserList.get(3);
+		assertNotNull(outputUserThree);
+		assertNotNull(outputUserThree.getUserId());
+		assertNotNull(outputUserThree.getLinks());
+		assertTrue(outputUserThree.toString().contains("links: [</v1/user/ID3>;rel=\"self\"]"));
+		assertEquals(inputUserList.get(3).getFirstName(), outputUserThree.getFirstName());
+		assertEquals(inputUserList.get(3).getLastName(), outputUserThree.getLastName());
+		assertEquals(inputUserList.get(3).getAddress(), outputUserThree.getAddress());
+		assertEquals(inputUserList.get(3).getBirthDate(), outputUserThree.getBirthDate());
+		
+		var outputUserFour = outputUserList.get(4);
+		assertNotNull(outputUserFour);
+		assertNotNull(outputUserFour.getUserId());
+		assertNotNull(outputUserFour.getLinks());
+		assertTrue(outputUserFour.toString().contains("links: [</v1/user/ID4>;rel=\"self\"]"));
+		assertEquals(inputUserList.get(4).getFirstName(), outputUserFour.getFirstName());
+		assertEquals(inputUserList.get(4).getLastName(), outputUserFour.getLastName());
+		assertEquals(inputUserList.get(4).getAddress(), outputUserFour.getAddress());
+		assertEquals(inputUserList.get(4).getBirthDate(), outputUserFour.getBirthDate());
 	}
 
 	@Test
