@@ -16,6 +16,7 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.stautisabela.completespringbootapi.data.vo.v1.UserVO;
+import com.stautisabela.completespringbootapi.exceptions.RequiredObjectIsNullException;
 import com.stautisabela.completespringbootapi.mapper.EntityMapper;
 import com.stautisabela.completespringbootapi.model.User;
 import com.stautisabela.completespringbootapi.repository.UserRepository;
@@ -88,6 +89,18 @@ class UserServiceTest {
 		assertEquals(inputUser.getAddress(), outputUser.getAddress());
 		assertEquals(inputUser.getBirthDate(), outputUser.getBirthDate());
 	}
+	
+	@Test
+	void testCreateWithNullObject() {
+		Exception exception = assertThrows(RequiredObjectIsNullException.class, () -> {
+			service.create(null);
+		});
+		
+		String expectedMessage = "Cannot save a null object.";
+		String outputMessage = exception.getMessage();
+
+		assertTrue(outputMessage.contains(expectedMessage));
+	}
 
 	@Test
 	void testUpdate() {
@@ -109,6 +122,19 @@ class UserServiceTest {
 		assertEquals(inputUser.getAddress(), outputUser.getAddress());
 		assertEquals(inputUser.getBirthDate(), outputUser.getBirthDate());
 	}
+	
+	@Test
+	void testUpdateWithNullObject() {
+		Exception exception = assertThrows(RequiredObjectIsNullException.class, () -> {
+			service.update(null);
+		});
+		
+		String expectedMessage = "Cannot save a null object.";
+		String outputMessage = exception.getMessage();
+
+		assertTrue(outputMessage.contains(expectedMessage));
+	}
+
 
 	/*
 	@Test

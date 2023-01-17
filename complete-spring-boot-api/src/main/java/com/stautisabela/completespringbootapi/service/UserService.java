@@ -10,6 +10,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import com.stautisabela.completespringbootapi.controller.UserController;
 import com.stautisabela.completespringbootapi.data.vo.v1.UserVO;
+import com.stautisabela.completespringbootapi.exceptions.RequiredObjectIsNullException;
 import com.stautisabela.completespringbootapi.exceptions.ResourceNotFoundException;
 import com.stautisabela.completespringbootapi.mapper.EntityMapper;
 import com.stautisabela.completespringbootapi.model.User;
@@ -44,6 +45,8 @@ public class UserService {
 	}
 	
 	public UserVO create(UserVO user) {
+		if (user==null) throw new RequiredObjectIsNullException();
+		
 		logger.info("Creating user...");
 		
 		User newUser = mapper.parseVOToObject(user); // converting VO to model so it can be saved in the database
@@ -53,6 +56,8 @@ public class UserService {
 	}
 	
 	public UserVO update(UserVO user) {
+		if (user==null) throw new RequiredObjectIsNullException();
+		
 		User existingUser = repository.findById(user.getUserId()).orElseThrow(() -> new ResourceNotFoundException("User not found."));
 		logger.info("Updating user...");
 		
