@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,6 +54,7 @@ public class UserController {
 	}
 	
 	
+	@CrossOrigin(origins = "http://localhost:8080") // enabling CORS
 	@GetMapping(value="/{id}",
 			produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YAML})
 	@Operation(summary = "Finds a User",
@@ -71,6 +73,7 @@ public class UserController {
 	}
 	
 	
+	@CrossOrigin(origins = "http://localhost:8080") // enabling CORS
 	@PostMapping(value="/new",
 				 produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YAML},
 				 consumes = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YAML})
