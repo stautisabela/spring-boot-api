@@ -1,44 +1,28 @@
-package com.stautisabela.completespringbootapi.model;
+package com.stautisabela.completespringbootapi.integrationtests.vo;
 
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
-import org.hibernate.annotations.GenericGenerator;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
-@Entity
-@Table(name = "user")
-public class User implements Serializable {
+
+public class UserVO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	@GeneratedValue(generator = "uuid")
-	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	@Column(name = "id")
-	private String userId;
-	
-	@Column(name = "first_name")
+	private String id;
 	private String firstName;
-	
-	@Column(name = "last_name")
 	private String lastName;
-	
-	@Column
 	private String address;
-	
-	@Column(name = "birth_date")
 	private String birthDate;
 	
-	public User() {
+	public UserVO() {
+		
 	}
 
-	public User(String firstName, String lastName, String address, String birthDate) {
+	public UserVO(String id, String firstName, String lastName, String address, String birthDate) {
+		
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
@@ -46,11 +30,11 @@ public class User implements Serializable {
 	}
 
 	public String getUserId() {
-		return userId;
+		return id;
 	}
 	
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUserId(String id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -87,7 +71,7 @@ public class User implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(lastName, birthDate, userId);
+		return Objects.hash(lastName, birthDate, id);
 	}
 
 	@Override
@@ -99,12 +83,13 @@ public class User implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		UserVO other = (UserVO) obj;
 		return Objects.equals(lastName, other.lastName) && Objects.equals(birthDate, other.birthDate)
-				&& Objects.equals(userId, other.userId);
+				&& Objects.equals(id, other.id);
 	}
 	
 	public Date formatDate(String date) {
+		
 		SimpleDateFormat sdf = new SimpleDateFormat ("dd-MM-yyyy");
 		try {
 			return sdf.parse(date);
