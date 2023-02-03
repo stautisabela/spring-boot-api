@@ -9,13 +9,13 @@ import com.stautisabela.completespringbootapi.model.User;
 public class MockUser {
 	
 	public User mockUser(Integer num) {
-		User user = new User("First Name"+num, "Last Name"+num, "Address"+num, "01-06-2023");
+		User user = new User("First Name"+num, "Last Name"+num, "Address"+num, "01-06-2023", true);
 		user.setUserId("ID"+num);
 		return user;
 	}
 	
 	public UserVO mockUserVO(Integer num) {
-		UserVO user = new UserVO("ID"+num, "First Name"+num, "Last Name"+num, "Address"+num, "01-06-2023");
+		UserVO user = new UserVO("ID"+num, "First Name"+num, "Last Name"+num, "Address"+num, "01-06-2023", true);
 		return user;
 	}
 	

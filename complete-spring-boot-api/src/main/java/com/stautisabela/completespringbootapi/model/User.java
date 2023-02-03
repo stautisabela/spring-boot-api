@@ -35,14 +35,18 @@ public class User implements Serializable {
 	@Column(name = "birth_date")
 	private String birthDate;
 	
+	@Column
+	private Boolean active;
+	
 	public User() {
 	}
 
-	public User(String firstName, String lastName, String address, String birthDate) {
+	public User(String firstName, String lastName, String address, String birthDate, Boolean active) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
 		this.birthDate = birthDate;
+		this.active = active;
 	}
 
 	public String getUserId() {
@@ -83,6 +87,14 @@ public class User implements Serializable {
 
 	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
+	}
+	
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Override

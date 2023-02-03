@@ -16,6 +16,8 @@ import com.stautisabela.completespringbootapi.mapper.EntityMapper;
 import com.stautisabela.completespringbootapi.model.User;
 import com.stautisabela.completespringbootapi.repository.UserRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class UserService {
 	
@@ -68,6 +70,28 @@ public class UserService {
 		
 		UserVO vo = mapper.parseObjectToVO(repository.save(existingUser));
 		vo.add(linkTo(methodOn(UserController.class).findById(vo.getUserId())).withSelfRel());
+		return vo;
+	}
+	
+	@Transactional
+	public UserVO activateUser(String id) {
+		logger.info("Activating user...");
+		repository.activateUser(id);
+		
+		User user = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found."));
+		UserVO vo = mapper.parseObjectToVO(user);
+		vo.add(linkTo(methodOn(UserController.class).findById(id)).withSelfRel());
+		return vo;
+	}
+	
+	@Transactional
+	public UserVO disactivateUser(String id) {
+		logger.info("Disactivating user...");
+		repository.disactivateUser(id);
+		
+		User user = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found."));
+		UserVO vo = mapper.parseObjectToVO(user);
+		vo.add(linkTo(methodOn(UserController.class).findById(id)).withSelfRel());
 		return vo;
 	}
 	

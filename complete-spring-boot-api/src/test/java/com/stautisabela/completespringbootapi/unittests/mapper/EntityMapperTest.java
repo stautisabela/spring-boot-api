@@ -33,6 +33,7 @@ public class EntityMapperTest {
 		assertEquals(inputUser.getLastName(), outputUser.getLastName());
 		assertEquals(inputUser.getAddress(), outputUser.getAddress());
 		assertEquals(inputUser.getBirthDate(), outputUser.getBirthDate());
+		assertEquals(inputUser.getActive(), outputUser.getActive());
 	}
 	
 	@Test
@@ -45,6 +46,7 @@ public class EntityMapperTest {
 		assertEquals(inputUser.getLastName(), outputUser.getLastName());
 		assertEquals(inputUser.getAddress(), outputUser.getAddress());
 		assertEquals(inputUser.getBirthDate(), outputUser.getBirthDate());
+		assertEquals(inputUser.getActive(), outputUser.getActive());
 	}
 	
 	@Test
@@ -58,6 +60,7 @@ public class EntityMapperTest {
 		assertEquals(inputList.get(0).getLastName(), userZero.getLastName());
 		assertEquals(inputList.get(0).getAddress(), userZero.getAddress());
 		assertEquals(inputList.get(0).getBirthDate(), userZero.getBirthDate());
+		assertEquals(inputList.get(0).getActive(), userZero.getActive());
 		
 		UserVO userTwo = outputList.get(2);
 		assertEquals(inputList.get(2).getUserId(), userTwo.getUserId());
@@ -65,6 +68,7 @@ public class EntityMapperTest {
 		assertEquals(inputList.get(2).getLastName(), userTwo.getLastName());
 		assertEquals(inputList.get(2).getAddress(), userTwo.getAddress());
 		assertEquals(inputList.get(2).getBirthDate(), userTwo.getBirthDate());
+		assertEquals(inputList.get(2).getActive(), userTwo.getActive());
 		
 		UserVO userFour = outputList.get(4);
 		assertEquals(inputList.get(4).getUserId(), userFour.getUserId());
@@ -72,6 +76,7 @@ public class EntityMapperTest {
 		assertEquals(inputList.get(4).getLastName(), userFour.getLastName());
 		assertEquals(inputList.get(4).getAddress(), userFour.getAddress());
 		assertEquals(inputList.get(4).getBirthDate(), userFour.getBirthDate());
+		assertEquals(inputList.get(4).getActive(), userFour.getActive());
 	}
 	
 	@Test
@@ -85,6 +90,7 @@ public class EntityMapperTest {
 		assertEquals(inputList.get(0).getLastName(), userZero.getLastName());
 		assertEquals(inputList.get(0).getAddress(), userZero.getAddress());
 		assertEquals(inputList.get(0).getBirthDate(), userZero.getBirthDate());
+		assertEquals(inputList.get(0).getActive(), userZero.getActive());
 		
 		User userTwo = outputList.get(2);
 		assertEquals(inputList.get(2).getUserId(), userTwo.getUserId());
@@ -92,6 +98,7 @@ public class EntityMapperTest {
 		assertEquals(inputList.get(2).getLastName(), userTwo.getLastName());
 		assertEquals(inputList.get(2).getAddress(), userTwo.getAddress());
 		assertEquals(inputList.get(2).getBirthDate(), userTwo.getBirthDate());
+		assertEquals(inputList.get(2).getActive(), userTwo.getActive());
 		
 		User userFour = outputList.get(4);
 		assertEquals(inputList.get(4).getUserId(), userFour.getUserId());
@@ -99,5 +106,6 @@ public class EntityMapperTest {
 		assertEquals(inputList.get(4).getLastName(), userFour.getLastName());
 		assertEquals(inputList.get(4).getAddress(), userFour.getAddress());
 		assertEquals(inputList.get(4).getBirthDate(), userFour.getBirthDate());
+		assertEquals(inputList.get(4).getActive(), userFour.getActive());
 	}
 }

@@ -21,18 +21,18 @@ public class UserVO extends RepresentationModel<UserVO> implements Serializable 
 	private String lastName;
 	private String address;
 	private String birthDate;
+	private Boolean active;
 	
 	public UserVO() {
-		
 	}
 
-	public UserVO(String userId, String firstName, String lastName, String address, String birthDate) {
-		
+	public UserVO(String userId, String firstName, String lastName, String address, String birthDate, Boolean active) {
 		this.userId = userId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
 		this.birthDate = birthDate;
+		this.active = active;
 	}
 
 	public String getUserId() {
@@ -73,6 +73,14 @@ public class UserVO extends RepresentationModel<UserVO> implements Serializable 
 
 	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
+	}
+
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Override
